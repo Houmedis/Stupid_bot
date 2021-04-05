@@ -1,1 +1,1 @@
-web: python trash.py
+web: python main.py
