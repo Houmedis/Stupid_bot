@@ -6,3 +6,5 @@ requests
 sqlalchemy
 werkzeug
 datetime
+flask_ngrok
+sqlalchemy_serializer
