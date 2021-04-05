@@ -1,4 +1,5 @@
 import os
+
 from flask import Flask, render_template, redirect, request
 from flask_wtf import FlaskForm
 from flask_login import LoginManager, login_user, login_required, current_user
