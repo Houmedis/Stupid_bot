@@ -1,5 +1,4 @@
 import os
-
 from flask import Flask, render_template, redirect, request
 from flask_wtf import FlaskForm
 from flask_login import LoginManager, login_user, login_required, current_user
@@ -32,18 +31,18 @@ def load_user(user_id):
 @app.route('/weather/<int:id>', methods=['GET', 'POST'])
 def weather(id):
     sl = Weather()
-    sl_1 = {'clear': 'ясно',
-          'partly-cloudy': 'малооблачно', 'cloudy': 'облачно с прояснениями',
-          'overcast': 'пасмурно', 'drizzle': 'морось', 
-          'light-rain': 'небольшой дождь',
-          'rain': 'дождь', 'moderate-rain': 'умеренно сильный дождь',
-          'heavy-rain': 'сильный дождь', 
-          'continuous-heavy-rain': 'длительный сильный дождь',
-          'showers': 'ливень', 'wet-snow': 'дождь со снегом',
-          'light-snow': 'небольшой снег', 'snow-showers': 'снегопад',
-          'hail': 'град', 'thunderstorm': 'гроза',
-          'thunderstorm-with-rain': 'дождь с грозой', 
-          'thunderstorm-with-hail': 'гроза с градом',
+    sl_1 = {'clear': 'ГїГ±Г­Г®',
+          'partly-cloudy': 'Г¬Г Г«Г®Г®ГЎГ«Г Г·Г­Г®', 'cloudy': 'Г®ГЎГ«Г Г·Г­Г® Г± ГЇГ°Г®ГїГ±Г­ГҐГ­ГЁГїГ¬ГЁ',
+          'overcast': 'ГЇГ Г±Г¬ГіГ°Г­Г®', 'drizzle': 'Г¬Г®Г°Г®Г±Гј', 
+          'light-rain': 'Г­ГҐГЎГ®Г«ГјГёГ®Г© Г¤Г®Г¦Г¤Гј',
+          'rain': 'Г¤Г®Г¦Г¤Гј', 'moderate-rain': 'ГіГ¬ГҐГ°ГҐГ­Г­Г® Г±ГЁГ«ГјГ­Г»Г© Г¤Г®Г¦Г¤Гј',
+          'heavy-rain': 'Г±ГЁГ«ГјГ­Г»Г© Г¤Г®Г¦Г¤Гј', 
+          'continuous-heavy-rain': 'Г¤Г«ГЁГІГҐГ«ГјГ­Г»Г© Г±ГЁГ«ГјГ­Г»Г© Г¤Г®Г¦Г¤Гј',
+          'showers': 'Г«ГЁГўГҐГ­Гј', 'wet-snow': 'Г¤Г®Г¦Г¤Гј Г±Г® Г±Г­ГҐГЈГ®Г¬',
+          'light-snow': 'Г­ГҐГЎГ®Г«ГјГёГ®Г© Г±Г­ГҐГЈ', 'snow-showers': 'Г±Г­ГҐГЈГ®ГЇГ Г¤',
+          'hail': 'ГЈГ°Г Г¤', 'thunderstorm': 'ГЈГ°Г®Г§Г ',
+          'thunderstorm-with-rain': 'Г¤Г®Г¦Г¤Гј Г± ГЈГ°Г®Г§Г®Г©', 
+          'thunderstorm-with-hail': 'ГЈГ°Г®Г§Г  Г± ГЈГ°Г Г¤Г®Г¬',
           }
     sl['condition'] = sl_1[sl['condition']]
     return render_template('weather.html', sl=sl, id=id)
@@ -65,7 +64,7 @@ def register():
             db_sess.add(user)
             db_sess.commit()
             return redirect("/login")
-    return render_template('register.html', title='Регистрация', form=form)
+    return render_template('register.html', title='ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї', form=form)
 
 
 @app.route('/logout')
@@ -138,9 +137,9 @@ def login():
                 return redirect(f"/enter/{id}")
         else:
             return render_template('login.html',
-                               message="Неправильный логин или пароль",
+                               message="ГЌГҐГЇГ°Г ГўГЁГ«ГјГ­Г»Г© Г«Г®ГЈГЁГ­ ГЁГ«ГЁ ГЇГ Г°Г®Г«Гј",
                                form=form)    
-    return render_template('login.html', title='Авторизация', form=form, 
+    return render_template('login.html', title='ГЂГўГІГ®Г°ГЁГ§Г Г¶ГЁГї', form=form, 
                            message='0')
 
 
