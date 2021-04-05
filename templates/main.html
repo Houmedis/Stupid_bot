@@ -1,0 +1,19 @@
+﻿	{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="post" novalidate>
+        <div>
+            {{ form.csrf_token }}
+        </div>
+	{% if gadjet.weather %}
+	<br>
+	<a class="btn btn-primary " href="/weather/{{id}}">Погода</a>
+	<br>
+	{% endif %}
+	{% if gadjet.chat %}
+	<br>	
+	<a class="btn btn-primary " href="/Kirill/{{id}}">Чат бот(немного юморной и бессмысленный)</a>
+	<br>
+	{% endif %}
+</form>
+{% endblock %}

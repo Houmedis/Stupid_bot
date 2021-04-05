@@ -1,0 +1,73 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="post" novalidate>
+        <div>
+            {{ form.csrf_token }}
+        </div>
+	<br>
+	<h1>Регистрация</h1>
+        <p>
+        {{ form.job_title.label }}<br>
+        {{ form.job_title(class="form-control", type="email") }}<br>
+        {% for error in form.job_title.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+    	<p>
+        {{ form.password.label }}<br>
+        {{ form.password(class="form-control", type="password") }}<br>
+        {% for error in form.password.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+	<p>
+        {{ form.rep_password.label }}<br>
+        {{ form.rep_password(class="form-control", type="password") }}<br>
+        {% for error in form.rep_password.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+	<p>
+        {{ form.name.label }}<br>
+        {{ form.name(class="form-control") }}<br>
+        {% for error in form.name.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+	<p>
+        {{ form.weather() }}
+	{{ form.weather.label }}<br>
+        {% for error in form.weather.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+	<p>
+        {{ form.chat() }}
+	{{ form.chat.label }}<br>
+        {% for error in form.chat.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+	<p>
+        {{ form.submit() }}<br>
+        {% for error in form.submit.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+    </form>
+{% endblock %}
