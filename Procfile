@@ -1,1 +1,1 @@
-web: python der.py
+web: python cw1.py
