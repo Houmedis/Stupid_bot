@@ -8,7 +8,6 @@ from wtforms import TextAreaField
 from wtforms.validators import DataRequired
 from data import db_session
 from data.users import User
-from data.job import Jobs
 from data.form import *
 from data.weather import Weather
 
