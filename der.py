@@ -7,10 +7,6 @@ from flask_login import logout_user
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms import TextAreaField
 from wtforms.validators import DataRequired
-from data import db_session
-from data.users import User
-from data.job import Jobs
-from data.weather import Weather
 
 
 app = Flask(__name__)
