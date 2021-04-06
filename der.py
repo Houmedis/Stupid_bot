@@ -14,9 +14,7 @@ from data.weather import Weather
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
-login_manager = LoginManager()
-login_manager.init_app(app)
+app.config['SECRET_KEY'] = 'yandexlyceum_secret_key
 
 
 class LoginForm(FlaskForm):
