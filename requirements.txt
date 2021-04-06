@@ -7,3 +7,5 @@ requests
 werkzeug
 flask_wtf
 wtforms
+sys
+os
