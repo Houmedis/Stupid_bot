@@ -17,15 +17,6 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 login_manager = LoginManager()
 login_manager.init_app(app)
-user = None
-sl = {}
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    db_session.global_init("db/mars.db")
-    db_sess = db_session.create_session()
-    return db_sess.query(User).get(user_id)
 
 
 class LoginForm(FlaskForm):
@@ -38,26 +29,7 @@ class LoginForm(FlaskForm):
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
-    if request.method == 'POST':
-        db_session.global_init("db/mars.db")
-        db_sess = db_session.create_session()
-        user = db_sess.query(User).filter(User.email == form.name.data).first()
-        if user is not None:
-            if user.hashed_password == form.password.data:
-                global sl
-                sl = {}
-                login_user(user, remember=form.remember_me.data)
-                sl['email'] = user.email
-                sl['name'] = user.name
-                sl['weather'] = user.weather
-                sl['chat'] = user.chat
-                id = user.id
-                return redirect(f"/enter/{id}")
-        else:
-            return render_template('login.html',
-                               message="Неправильный логин или пароль",
-                               form=form)    
+    form = LoginForm() 
     return render_template('login.html', title='Авторизация', form=form, 
                            message='0')
 
