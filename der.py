@@ -10,7 +10,6 @@ from wtforms.validators import DataRequired
 from data import db_session
 from data.users import User
 from data.job import Jobs
-from data.form import *
 from data.weather import Weather
 
 
@@ -28,6 +27,13 @@ def load_user(user_id):
     db_sess = db_session.create_session()
     return db_sess.query(User).get(user_id)
 
+
+class LoginForm(FlaskForm):
+    name = StringField('Email', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember me?')
+    submit = SubmitField('Submit')
+    
 
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
@@ -50,9 +56,9 @@ def login():
                 return redirect(f"/enter/{id}")
         else:
             return render_template('login.html',
-                               message="Неправильный логин или пароль",
+                               message="РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ",
                                form=form)    
-    return render_template('login.html', title='Авторизация', form=form, 
+    return render_template('login.html', title='РђРІС‚РѕСЂРёР·Р°С†РёСЏ', form=form, 
                            message='0')
 
 
