@@ -31,18 +31,18 @@ def load_user(user_id):
 @app.route('/weather/<int:id>', methods=['GET', 'POST'])
 def weather(id):
     sl = Weather()
-    sl_1 = {'clear': 'ясно',
-          'partly-cloudy': 'малооблачно', 'cloudy': 'облачно с прояснениями',
-          'overcast': 'пасмурно', 'drizzle': 'морось', 
-          'light-rain': 'небольшой дождь',
-          'rain': 'дождь', 'moderate-rain': 'умеренно сильный дождь',
-          'heavy-rain': 'сильный дождь', 
-          'continuous-heavy-rain': 'длительный сильный дождь',
-          'showers': 'ливень', 'wet-snow': 'дождь со снегом',
-          'light-snow': 'небольшой снег', 'snow-showers': 'снегопад',
-          'hail': 'град', 'thunderstorm': 'гроза',
-          'thunderstorm-with-rain': 'дождь с грозой', 
-          'thunderstorm-with-hail': 'гроза с градом',
+    sl_1 = {'clear': 'СЏСЃРЅРѕ',
+          'partly-cloudy': 'РјР°Р»РѕРѕР±Р»Р°С‡РЅРѕ', 'cloudy': 'РѕР±Р»Р°С‡РЅРѕ СЃ РїСЂРѕСЏСЃРЅРµРЅРёСЏРјРё',
+          'overcast': 'РїР°СЃРјСѓСЂРЅРѕ', 'drizzle': 'РјРѕСЂРѕСЃСЊ', 
+          'light-rain': 'РЅРµР±РѕР»СЊС€РѕР№ РґРѕР¶РґСЊ',
+          'rain': 'РґРѕР¶РґСЊ', 'moderate-rain': 'СѓРјРµСЂРµРЅРЅРѕ СЃРёР»СЊРЅС‹Р№ РґРѕР¶РґСЊ',
+          'heavy-rain': 'СЃРёР»СЊРЅС‹Р№ РґРѕР¶РґСЊ', 
+          'continuous-heavy-rain': 'РґР»РёС‚РµР»СЊРЅС‹Р№ СЃРёР»СЊРЅС‹Р№ РґРѕР¶РґСЊ',
+          'showers': 'Р»РёРІРµРЅСЊ', 'wet-snow': 'РґРѕР¶РґСЊ СЃРѕ СЃРЅРµРіРѕРј',
+          'light-snow': 'РЅРµР±РѕР»СЊС€РѕР№ СЃРЅРµРі', 'snow-showers': 'СЃРЅРµРіРѕРїР°Рґ',
+          'hail': 'РіСЂР°Рґ', 'thunderstorm': 'РіСЂРѕР·Р°',
+          'thunderstorm-with-rain': 'РґРѕР¶РґСЊ СЃ РіСЂРѕР·РѕР№', 
+          'thunderstorm-with-hail': 'РіСЂРѕР·Р° СЃ РіСЂР°РґРѕРј',
           }
     sl['condition'] = sl_1[sl['condition']]
     return render_template('weather.html', sl=sl, id=id)
@@ -64,7 +64,7 @@ def register():
             db_sess.add(user)
             db_sess.commit()
             return redirect("/login")
-    return render_template('register.html', title='Регистрация', form=form)
+    return render_template('register.html', title='ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї', form=form)
 
 
 @app.route('/logout')
@@ -137,9 +137,9 @@ def login():
                 return redirect(f"/enter/{id}")
         else:
             return render_template('login.html',
-                               message="Неправильный логин или пароль",
+                               message="ГЌГҐГЇГ°Г ГўГЁГ«ГјГ­Г»Г© Г«Г®ГЈГЁГ­ ГЁГ«ГЁ ГЇГ Г°Г®Г«Гј",
                                form=form)    
-    return render_template('login.html', title='Авторизация', form=form, 
+    return render_template('login.html', title='ГЂГўГІГ®Г°ГЁГ§Г Г¶ГЁГї', form=form, 
                            message='0')
 
 
