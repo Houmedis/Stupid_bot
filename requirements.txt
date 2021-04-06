@@ -1,10 +1,9 @@
-flask
-flask_wtf
-flask_login
-wtforms
-requests
-sqlalchemy
-werkzeug
 datetime
-flask_ngrok
+sqlalchemy
+flask
 sqlalchemy_serializer
+flask_login
+requests
+werkzeug
+flask_wtf
+wtforms
