@@ -64,18 +64,13 @@ def register():
             db_sess.add(user)
             db_sess.commit()
             return redirect("/login")
-    return render_template('register.html', title='Ðåãèñòðàöèÿ', form=form)
+    return render_template('register.html', title='Регистрация', form=form)
 
 
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
-    return redirect("/login")
-
-
-@app.errorhandler(404)
-def not_found_error(error):
     return redirect("/login")
 
 
@@ -137,14 +132,12 @@ def login():
                 return redirect(f"/enter/{id}")
         else:
             return render_template('login.html',
-                               message="Íåïðàâèëüíûé ëîãèí èëè ïàðîëü",
+                               message="Неправильный логин или пароль",
                                form=form)    
-    return render_template('login.html', title='Àâòîðèçàöèÿ', form=form, 
+    return render_template('login.html', title='Авторизация', form=form, 
                            message='0')
 
 
 if __name__ == '__main__':
-    db_session.global_init("db/blogs.db")
-    app.register_blueprint(users_api.blueprint)
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
