@@ -27,22 +27,26 @@ def load_user(user_id):
     return db_sess.query(User).get(user_id)
 
 
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('login.html')
+
 @app.route('/weather/<int:id>', methods=['GET', 'POST'])
 def weather(id):
-    sl = Weather()
+    sl = Weather('Нижнекамск')
     sl_1 = {'clear': 'ясно',
-          'partly-cloudy': 'малооблачно', 'cloudy': 'облачно с прояснениями',
-          'overcast': 'пасмурно', 'drizzle': 'морось', 
-          'light-rain': 'небольшой дождь',
-          'rain': 'дождь', 'moderate-rain': 'умеренно сильный дождь',
-          'heavy-rain': 'сильный дождь', 
-          'continuous-heavy-rain': 'длительный сильный дождь',
-          'showers': 'ливень', 'wet-snow': 'дождь со снегом',
-          'light-snow': 'небольшой снег', 'snow-showers': 'снегопад',
-          'hail': 'град', 'thunderstorm': 'гроза',
-          'thunderstorm-with-rain': 'дождь с грозой', 
-          'thunderstorm-with-hail': 'гроза с градом',
-          }
+              'partly-cloudy': 'малооблачно', 'cloudy': 'облачно с прояснениями',
+              'overcast': 'пасмурно', 'drizzle': 'морось', 
+              'light-rain': 'небольшой дождь',
+              'rain': 'дождь', 'moderate-rain': 'умеренно сильный дождь',
+              'heavy-rain': 'сильный дождь', 
+              'continuous-heavy-rain': 'длительный сильный дождь',
+              'showers': 'ливень', 'wet-snow': 'дождь со снегом',
+              'light-snow': 'небольшой снег', 'snow-showers': 'снегопад',
+              'hail': 'град', 'thunderstorm': 'гроза',
+              'thunderstorm-with-rain': 'дождь с грозой', 
+              'thunderstorm-with-hail': 'гроза с градом',
+              }
     sl['condition'] = sl_1[sl['condition']]
     return render_template('weather.html', sl=sl, id=id)
 
@@ -91,25 +95,6 @@ def enterned(id):
         return redirect('/login')
 
 
-@app.route('/addjob/<int:id>', methods=['GET', 'POST'])
-@login_required
-def addjob(id):
-    form = JobForm()
-    if form.validate_on_submit():
-        db_session.global_init("db/mars.db")
-        db_sess = db_session.create_session()
-        user = Jobs()
-        user.job = form.job_title.data
-        user.team_leader = id
-        user.work_size = form.work_size.data
-        user.collaborators = form.collaborators.data
-        user.is_finished = form.is_finished.data
-        db_sess.add(user)
-        db_sess.commit()
-        return redirect(f"/enter/{id}")
-    return render_template('addjob.html', form=form)
-
-
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -138,5 +123,4 @@ def login():
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(port=8080, host='127.0.0.1')
