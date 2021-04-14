@@ -1,0 +1,41 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="post" novalidate>
+		<p>
+        {{ form.weather() }}
+	{{ form.weather.label }}<br>
+        {% for error in form.weather.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+	<p>
+        {{ form.chat() }}
+	{{ form.chat.label }}<br>
+        {% for error in form.chat.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+	<p>
+        {{ form.slides() }}
+	{{ form.slides.label }}<br>
+        {% for error in form.slides.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+	<p>
+        {{ form.submit() }}<br>
+        {% for error in form.submit.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+    </form>
+{% endblock %}

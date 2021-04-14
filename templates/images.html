@@ -1,0 +1,34 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="post" novalidate>
+	<br>
+	<a class="btn btn-primary " href="/enter/{{id}}">Выйти в главное меню</a>
+	<br>
+	{% if gadjet.games %}
+	<br>
+	<a class="btn btn-primary " href="/images/games/{{id}}">games</a>
+	<br>
+	{% endif %}
+	{% if gadjet.movies %}
+	<br>
+	<a class="btn btn-primary " href="/images/movies/{{id}}">movies</a>
+	<br>
+	{% endif %}
+	{% if gadjet.anime %}
+	<br>
+	<a class="btn btn-primary " href="/images/anime/{{id}}">anime</a>
+	<br>
+	{% endif %}
+	{% if gadjet.music %}
+	<br>
+	<a class="btn btn-primary " href="/images/music/{{id}}">music</a>
+	<br>
+	{% endif %}
+	{% if gadjet.li24 %}
+	<br>
+	<a class="btn btn-primary " href="/images/li24/{{id}}">li24</a>
+	<br>
+	{% endif %}
+</form>
+{% endblock %}

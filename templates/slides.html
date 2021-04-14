@@ -1,0 +1,59 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="post" novalidate>
+		<p>
+        {{ form.games() }}
+	{{ form.games.label }}<br>
+        {% for error in form.games.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+	<p>
+        {{ form.movies() }}
+	{{ form.movies.label }}<br>
+        {% for error in form.movies.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+	<p>
+        {{ form.anime() }}
+	{{ form.anime.label }}<br>
+        {% for error in form.anime.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+	<p>
+        {{ form.music() }}
+	{{ form.music.label }}<br>
+        {% for error in form.music.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+	<p>
+        {{ form.li24() }}
+	{{ form.li24.label }}<br>
+        {% for error in form.li24.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+	<p>
+        {{ form.submit() }}<br>
+        {% for error in form.submit.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    	</p>
+    </form>
+{% endblock %}

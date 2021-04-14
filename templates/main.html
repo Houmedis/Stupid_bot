@@ -1,0 +1,27 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="post" novalidate>
+	<br>
+	<a class="btn btn-primary " href="/setting/{{id}}">Настройка</a>
+	</br>
+	{% if gadjet.weather %}
+	<br>
+	<a class="btn btn-primary " href="/weather/{{id}}">Погода</a>
+	<br>
+	{% endif %}
+	{% if gadjet.chat %}
+	<br>	
+	<a class="btn btn-primary " href="/Kirill/{{id}}">Чат бот(немного юморной и бессмысленный)</a>
+	<br>
+	{% endif %}
+	{% if gadjet.slides %}
+	<br>	
+	<a class="btn btn-primary " href="/Slides/{{id}}">Настройка слайдов</a>
+	<br>
+	<br>	
+	<a class="btn btn-primary " href="/images/{{id}}">Слайды(картинки) с выбранными вами темами</a>
+	<br>
+	{% endif %}
+</form>
+{% endblock %}

@@ -1,0 +1,13 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+    <br>
+	<a class="btn btn-primary " href="/enter/{{id}}">Выйти в главное меню</a>
+    <form action="" method="post" novalidate>
+	<h1>Сейчас</h1>
+	<h4>Температура {{sl.temp}} градусов</h4>
+	<h4>Ощущается как {{sl.feels_like}} градусов</h4>
+	<h4>Погодные условия {{sl.condition}}</h4>
+	<h4>Скорость ветра {{sl.wind_speed}} м/с</h4>
+    </form>
+{% endblock %}
