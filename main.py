@@ -123,6 +123,8 @@ def slides(id):
         db_session.global_init("db/mars.db")
         db_sess = db_session.create_session()
         user = db_sess.query(Slides).filter(Slides.id_main == id).first()
+        if user is None:
+            user = Slides()
         user.id_main = id
         user.games = form.games.data
         user.movies = form.movies.data
